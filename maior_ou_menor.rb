@@ -61,5 +61,7 @@ for tentativa in 1..limite_de_tentativas
 	chutes[total_de_chutes] = chute
 	total_de_chutes+=1
 
+	puts "teste"
+
 	break if verifica_se_acertou numero_secreto, chute	
 end
