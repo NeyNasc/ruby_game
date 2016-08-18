@@ -63,33 +63,48 @@ def pede_dificuldade
 	dificuldade = gets.to_i
 end
 
+def nao_quer_jogar?
+	puts "Deseja jogar novamente? (S/N)"
+	quero_jogar = gets.strip
+	nao_quero_jogar = quero_jogar.upcase == "N"
+	
+end
+
+def joga(nome, dificuldade)
+	numero_secreto = sorteia_numero_secreto dificuldade
+	pontos_ate_asgora = 1000
+
+	limite_de_tentativas = 5
+	chutes =[]
+	total_de_chutes = 0
+
+
+	for tentativa in 1..limite_de_tentativas
+		chute = pede_um_numero chutes, tentativa, limite_de_tentativas
+		chutes << chute
+
+		if nome == "Claudiney"
+			puts "Acertou!"
+			break
+		end
+
+
+		pontos_a_perder = (chute - numero_secreto).abs/2.0
+		pontos_ate_asgora -= pontos_a_perder
+
+		break if verifica_se_acertou numero_secreto, chute	
+	end	
+	puts "Você ganhou #{pontos_ate_asgora} pontos"
+end
 
 
 #Invocações principais
 nome = da_boas_vindas
-numero_secreto = sorteia_numero_secreto pede_dificuldade
-pontos_ate_asgora = 1000
+dificuldade = pede_dificuldade
 
-limite_de_tentativas = 5
-chutes =[]
-total_de_chutes = 0
-
-
-for tentativa in 1..limite_de_tentativas
-	chute = pede_um_numero chutes, tentativa, limite_de_tentativas
-	chutes << chute
-
-	if nome == "Claudiney"
-		puts "Acertou!"
-		break
-	end
-
-
-	pontos_a_perder = (chute - numero_secreto).abs/2.0
-
-	pontos_ate_asgora -= pontos_a_perder
-
-	break if verifica_se_acertou numero_secreto, chute	
+loop do
+	joga nome, dificuldade
+	break if nao_quer_jogar?
 end
 
-puts "Você ganhou #{pontos_ate_asgora} pontos"
+
