@@ -1,6 +1,14 @@
 
 def da_boas_vindas
-	puts "Bem vindo ao jogo da adivinhação"
+	puts
+    puts "        P  /_\  P                              "
+    puts "       /_\_|_|_/_\                             "
+    puts "   n_n | ||. .|| | n_n         Bem vindo ao    "
+    puts "   |_|_|nnnn nnnn|_|_|     Jogo de Adivinhação!"
+    puts "  |' '  |  |_|  |'  ' |                        "
+    puts "  |_____| ' _ ' |_____|                        " 
+    puts "        \__|_|__/                              "
+    puts
 	puts "Qual o seu nome?"
 	nome = gets.strip
 	puts "\n\n\n\n"
@@ -45,7 +53,7 @@ def verifica_se_acertou(numero_secreto,chute)
 	acertou = numero_secreto == chute
 
 	if acertou
-		puts "Acertou!"
+		ganhou
 		return true
 	else
 		maior = numero_secreto>chute
@@ -59,7 +67,8 @@ def verifica_se_acertou(numero_secreto,chute)
 end
 
 def pede_dificuldade
-	puts "Qual o nível de dificuldade que deseja? (1 fácil, 5 difícil)"
+	puts "Qual o nível de dificuldade que deseja?
+	\n 1 muito fácil, 2 fácil, 3 normal, 4 difícil e 5 muito difícil"
 	dificuldade = gets.to_i
 end
 
@@ -84,7 +93,7 @@ def joga(nome, dificuldade)
 		chutes << chute
 
 		if nome == "Claudiney"
-			puts "Acertou!"
+			ganhou
 			break
 		end
 
@@ -97,6 +106,28 @@ def joga(nome, dificuldade)
 	puts "Você ganhou #{pontos_ate_asgora} pontos"
 end
 
+def ganhou
+	puts
+    puts "             OOOOOOOOOOO               "
+    puts "         OOOOOOOOOOOOOOOOOOO           "
+    puts "      OOOOOO  OOOOOOOOO  OOOOOO        "
+    puts "    OOOOOO      OOOOO      OOOOOO      "
+    puts "  OOOOOOOO  #   OOOOO  #   OOOOOOOO    "
+    puts " OOOOOOOOOO    OOOOOOO    OOOOOOOOOO   "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  "
+    puts "OOOO  OOOOOOOOOOOOOOOOOOOOOOOOO  OOOO  "
+    puts " OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO   "
+    puts "  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO    "
+    puts "    OOOOO   OOOOOOOOOOOOOOO   OOOO     "
+    puts "      OOOOOO   OOOOOOOOO   OOOOOO      "
+    puts "         OOOOOO         OOOOOO         "
+    puts "             OOOOOOOOOOOO              "
+    puts
+    puts "               Acertou!                "
+    puts
+	
+end
 
 #Invocações principais
 nome = da_boas_vindas
